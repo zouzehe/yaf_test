@@ -1,0 +1,113 @@
+<?php
+  
+ if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ }
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+ 
+if(!Y::isAjax()){
+ Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+ <?php }
+ ?>
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	    <span><i class="icon-table"></i> 用户管理 -- 按日期汇总</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+
+                            
+                             <table class="mws-datatable-fn mws-table">
+                                <div   class="dataTables_length" >                                    
+                                        从&nbsp;<input type="text" class="timeInput" name="startTime" id="startTime" readonly value="<?php echo $term['startTime']?>"> 
+                                        &nbsp;到&nbsp;<input type="text" class="timeInput" name="endTime" id="endTime" readonly value="<?php echo $term['endTime']?>">
+                                        <select name="DataTables_Table_0_length" name="cooperation" id="cooperation" size="1">
+                                            <option value=0 checked>从所有渠道</option>
+                                            <?php foreach ($cooperationList as $value){ ?>  
+                                                <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                                            <?php } ?>
+                                        </select>&nbsp;
+                                        <select name="DataTables_Table_0_length" name="platform" id="platform" size="1">
+                                            <option value=0 checked>从所有平台</option>
+                                            <?php foreach ($platformList as $value){ ?>  
+                                                <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                                            <?php } ?>
+                                        </select>  
+                                        &nbsp;<button class="btn btn-danger" id="searchByDate-btn">提交</botton>                                     
+                                </div>
+
+                            <thead>
+                                <tr role="row">
+                                    <th>日期</th>
+                                    <th>注册数</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody align="center">                            
+                            <?php 
+                            if(@$data){
+                                foreach ($data as $value) { ?>
+                                <tr role="row">
+                                    <td><?php echo date('Y-m-d',strtotime($value['join_time'])); ?></td>
+                                    <td><?php echo $value['reg_count'] ?></td>                                    
+                                </tr>
+                            <?php 
+                                }
+                            }
+                            ?>
+                                
+                            </tbody>
+                             </table>
+                         </div>
+
+                   
+                    </div>
+              </div>
+
+                <!-- Panels End -->
+
+   <?php
+    if(!Y::isAjax()){
+        ?>
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    }
+ ?>
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js?20130412"></script>
+<!-- Date Script -->
+<script src="/static/js/date/date.js"></script>
+<!-- Search Script -->
+<script src="/static/js/core/search.js"></script>
+<script>
+    document.getElementById("user-manger").style.display = "block";
+    $("#platform option[value='<?php echo $term["platform_id"] ?>']").attr("selected","true");
+    $("#cooperation option[value='<?php echo $term["cooperation_id"] ?>']").attr("selected","true");
+</script>
+   
+
+   

@@ -1,0 +1,98 @@
+<?php
+ if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ }
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+ if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+ <?php 
+    }
+ ?> 
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 
+                        <span><i class="icon-table"></i> 用户管理 -- 用户列表</span>           
+                        
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+
+                            
+                             <table class="mws-datatable-fn mws-table">
+                            <thead>
+                                <tr role="row">
+                                    <th>ID</th>                                   
+                                    <th>渠道代号</th>
+                                    <th>游戏昵称</th>
+                                    <th>注册时间</th>                                   
+                                    <th>金币</th>                                   
+                                    <th>游戏币</th>
+                                    <th>保险箱</th>                                  
+                                    <th>登录类型</th>
+                                 </tr>
+                            </thead>
+                            <tbody align="center">
+                            <?php foreach ($data as $value) { ?>
+                                <tr >
+                                    <td><?php echo $value['user_id']?></td>
+                                    <td><?php echo $value['cooperation_id']?></td> 
+                                    <td><a href="/user/edit/id/<?php echo $value['user_id']?>" ><?php echo $value['nickname']?></a></td>
+                                    <td><?php echo $value['join_time']?></td>
+                                    <td><?php echo $value['coins']?></td>
+                                    <td><?php echo $value['chips']?></td>
+                                    <td><?php echo $value['safebox_chips']?></td>
+                                    <td><?php echo $value['type']?></td>      
+                                </tr>
+                            <?php } ?>   
+                                
+                            </tbody>
+                             </table>
+                         </div>
+
+                   <?php echo $fpage;?>
+                    </div>
+              </div>
+
+                <!-- Panels End -->
+
+   
+ 
+            <!-- Inner Container End -->
+   <?php
+    if(!Y::isAjax()){
+    ?>
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    }
+ ?>
+
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js"></script>
+<script>
+    document.getElementById("user-manger").style.display = "block"
+</script>     

@@ -1,0 +1,84 @@
+<?php
+ if(!Y::isAjax()){
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+}
+ ?>
+
+
+
+
+
+
+
+
+
+<!-- menu.html开始 -->
+<?php
+if(!Y::isAjax()){
+ Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+<? }
+ ?>
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span><i class="icon-table"></i>最新应用</span>
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+                             <table class="mws-datatable mws-table">
+                            <thead>
+                                <tr role="row">
+                                    <th>用户名</th>
+                                    <th>真实姓名</th>
+                                    <th>登录时间</th>
+                                    <th>登录IP</th>
+                                     
+
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            <?php foreach($data as $value){ ?>
+                                <tr>
+                                    <td><?php echo $value['username']; ?></td>
+                                    <td><?php echo $value['realname']; ?></td>
+                                    <td><?php echo date('Y-m-d H:i:s',$value['logintime']); ?></td>
+                                    <td><?php echo $value['loginip']; ?></td>
+                                    
+                                </tr>
+                            <?php } ?>    
+                                
+                            </tbody>
+                             </table>
+                         </div>
+
+                   <?php echo $fpage;?>
+                    </div>
+              </div>
+
+                <!-- Panels End -->
+
+  <?php
+    if(!Y::isAjax()){
+        ?>
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    }
+ ?>

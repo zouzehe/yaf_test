@@ -1,0 +1,92 @@
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+            <!-- Inner Container Start -->
+            <div class="container">
+            
+                <!-- Statistics Button Container --><!-- Panels Start -->
+                
+                <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                         <span><i class="icon-table"></i> 用户管理 -- 道具列表</span> 
+                    </div>
+                     <div class="mws-panel-toolbar">
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <a href="/user/edit/id/<?php echo $uid?>" class="btn">详细信息</a>
+                                <a href="/user/vip/id/<?php echo $uid?>" class="btn">VIP类型</a>
+                                <a href="/user/viprecord/id/<?php echo $uid?>" class="btn">VIP使用记录</a>
+                                <a href="/user/email/id/<?php echo $uid?>" class="btn">邮件列表</a>
+                                <a href="/user/friends/id/<?php echo $uid?>" class="btn">好友列表</a>
+                                <a href="#" class="btn active">道具列表</a>
+                                <a href="/user/kick/id/<?php echo $uid?>" class="btn">踢人</a> 
+                                <a href="/user/speak/id/<?php echo $uid?>" class="btn">禁言</a>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+              
+                             <table class="mws-datatable-fn mws-table">
+                               
+                            <thead>
+                                <tr role="row">
+                                    <th>道具名称</th>
+                                    <th>购买时间</th>
+                                    <th>到期时间</th>
+                                    <th>个数</th>
+                                </tr>
+                            </thead>
+                            <tbody align="center">                            
+                            <?php 
+                            if(@$list){    
+                                foreach ($list as $value) { 
+                            ?>
+                                <tr role="row">
+                                    <td><?php echo $value['property_name']?></td>
+                                    <td><?php echo $value['add_time']?></td>
+                                    <td><?php echo $value['expire_time']?></td>
+                                    <td><?php echo $value['count']?></td>
+                                </tr>
+                            <?php } } ?>    
+                            </tbody>
+                             </table>
+ 
+                    </div>      
+                </div>
+
+                <!-- Panels End -->
+             </div>
+         </div>
+            <!-- Inner Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html");
+?>
+
+<!--对话框 -->
+<div id="dialog-message" style="display:none;">
+    <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <span id="message-details"></span>
+    </p>
+</div>
+
+<!-- Themer Script (Remove if not needed) -->
+<script src="/static/js/core/user.js"></script>
+<script src="/static/js/demo/demo.formelements.js"></script>
+<script src="/static/js/demo/demo.table.js?20130422"></script>
+<script>
+    document.getElementById("user-manger").style.display = "block"
+</script>

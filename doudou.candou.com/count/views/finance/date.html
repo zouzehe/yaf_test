@@ -1,0 +1,113 @@
+<?php
+ if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ }
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+if(!Y::isAjax()){ 
+    Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+            <!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+<?php }
+ ?> 
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                        <span><i class="icon-table"></i> 财务管理 -- 按日期汇总&nbsp;&nbsp;&nbsp;&nbsp;当前为<?php echo $time['startTime']?>到<?php echo $time['endTime']?> 的 所有渠道 所有支付方式 的财务数据</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+
+                            
+                             <table class="mws-datatable-fn mws-table">
+                                <div   class="dataTables_length">
+                                     <form name="searchForm" action="" method="post">
+                                        从&nbsp;<input type="text" class="timeInput" name="startTime" value="<?php echo $time['startTime'];?>" readonly> 
+                                        &nbsp;到&nbsp;<input type="text" class="timeInput" name="endTime" value="<?php echo $time['endTime'];?>" readonly>
+                                         合作渠道<select name="cooperation_id" size="1">
+                                            <option value="" selected>默认所有</option>
+                                           <?php foreach($option['c'] as $value){?>
+                                           <option <?php if($time['cooperation_id']==$value['id']){echo 'selected';}?> value="<?php echo $value['id'];?>"><?php echo $value['name']?></option>
+                                            <?php }?>
+                                         </select>
+                                          支付方式<select name="payment_id" size="1">
+                                            <option value="" selected>默认所有</option>
+                                            <?php foreach($option['p'] as $val){?>
+                                            <option <?php if($time['payment_id']==$val['id']){echo 'selected';}?> value="<?php echo $val['id'];?>"><?php echo $val['name'];?></option>
+                                            <?php }?>
+                                         </select>
+                                        <!-- <select name="DataTables_Table_0_length" id="changeNum" size="1">
+                                            <option>从所有渠道</option>
+                                        </select> --> 
+                                        &nbsp;<button class="btn btn-danger" type="button" onclick="searchForm.submit();">提交</button> 
+                                    </form>                                      
+                                    
+                                </div>
+                            <thead>
+                                <tr role="row">
+                                    <th>订单日期</th>
+                                    <th>订单数</th>
+                                    <th>订单总额</th>
+                                   
+                                    
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            
+                                 <?php
+                               if(@$list){
+                                foreach ($list as $value) { ?>
+                                <tr role="row">
+                                    <td><?php echo $value['pay_time']; ?></td>
+                                    <td><?php echo $value['t']; ?></td>
+                                    <td><?php echo $value['total']; ?></td>                                      
+                                </tr>
+                            <?php 
+                                }
+                            }
+                            ?>
+                              
+
+                                
+                            </tbody>
+                             </table>
+                         </div>
+
+                   
+                    </div>
+              </div>
+
+                <!-- Panels End -->
+
+   
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/date/date.js"></script>
+<script src="/static/js/demo/demo.table.js"></script>
+<script>
+    document.getElementById("finance-manger").style.display = "block"
+</script>   
+
+   

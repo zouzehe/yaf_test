@@ -1,0 +1,130 @@
+<?php
+ 
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ 
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+ 
+ Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+ 
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 <span><i class="icon-table"></i> 游戏●牛牛 -- 房间属性</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+
+                            
+                            <form>
+                            <table class="mws-datatable-fn mws-table">
+                                <div class="dataTables_length">
+                                     
+                                        &nbsp;&nbsp;&nbsp;<a href="/game/roomadd" class="btn btn-small" title="添加"><i class="icon-plus"></i>&nbsp;新增房间等级</a> 
+                                                                        
+                                    
+                                </div>
+                            <thead>
+                                <tr role="row">
+                                    <th>房间等级ID</th>
+                                    <th>房间名称</th>
+                                    <th>在线人数</th>
+                                    <th>玩法</th>
+                                    <th>最小携带</th>
+                                    <th>最大携带</th>
+                                    <th>默认携带</th>
+                                    <th>房间基数</th>
+                                    <th>操作</th>
+                                                                          
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+
+<?php foreach($attrList as $val ){ ?>                                
+                                <tr >
+                                    <td><?php echo $val['room_level_code']; ?></td>
+                                    <td><?php echo $val['room_level_name']; ?></td>
+                                    <td>100</td>
+                                    <td><?php echo $val['can_call_banker']?'抢庄':'非抢庄'; ?></td>
+                                    <td><?php echo $val['min_carry']; ?></td>
+                                    <td><?php echo $val['max_carry']; ?></td>
+                                    <td><?php echo $val['default_carry']; ?></td> 
+                                    <td><?php echo $val['room_base']; ?></td> 
+                                    <td>
+                                        <span class="btn-group">                                     
+                                            <a href="roomedit/id/<?php echo $val['id'];?>" class="btn btn-small" title="修改"><i class="icon-pencil"></i></a> 
+                                            <a href="roomdel/id/<?php echo $val['id'];?>" class="btn btn-small" title="删除"><i class="icon-trash"></i></a>                                   
+                                        </span>     
+                                    </td>                                     
+                                </tr>
+<?php  } ?>
+
+              
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td> </td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                        </form>
+                        </div>
+                            
+                    
+                    </div>
+                    
+              </div>
+
+
+                        
+                <!-- Panels End -->
+
+   
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+
+ 
+
+ 
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+
+ <!--对话框 -->
+<div id="dialog-message" style="display:none;">
+    <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <span id="message-details"></span>
+    </p>
+</div>
+
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js"></script> 
+<script>
+    document.getElementById("game-manger").style.display = "block"
+</script>
+
+ 
+

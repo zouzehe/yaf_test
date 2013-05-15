@@ -1,0 +1,129 @@
+<?php
+ 
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ 
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+ 
+ Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+ 
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 <span><i class="icon-table"></i> 渠道管理 -- 支付方式</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+
+                            
+                            <form>
+                            <table class="mws-datatable-fn mws-table">
+                                <div class="dataTables_length">
+                                     
+                                        &nbsp;&nbsp;&nbsp;<a href="/channel/payadd" class="btn btn-small" title="添加"><i class="icon-plus"></i>&nbsp;新增支付方式</a> 
+                                                                        
+                                    
+                                </div>
+                            <thead>
+                                <tr role="row">
+                                    <th>支付方式</th>
+                                    <th>支付代号</th>
+                                    <th>本月订单数</th>
+                                    <th>总订单数</th>
+                                    <th>本月充值</th>
+                                    <th>总充值</th>
+                                    <th>操作</th>
+                                                                          
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+
+                                <?php if(!empty($list)){
+                                   foreach($list as $val ){
+                                ?>                                
+                                <tr >
+                                    <td><?php echo $val['name']; ?></td>
+                                    <td><?php echo $val['id']; ?></td>
+                                    <td><?php echo $val['order_count_cur_month'];?></td>
+                                    <td><?php echo $val['order_count']; ?></td>
+                                    <td><?php echo $val['pay_amount_cur_month']; ?></td>
+                                    <td><?php echo $val['pay_amount']; ?></td> 
+                                    <td>
+                                        <span class="btn-group">                                     
+                                            <a href="/channel/payedit/number/<?php echo $val['id'];?>" class="btn btn-small" title="编辑"><i class="icon-pencil"></i></a> 
+                                        </span>     
+                                    </td>                                     
+                                </tr>
+                                <?php }
+                                } ?>
+
+              
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td> </td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                        </form>
+                        </div>
+                            
+                        <?php echo $fpage;?>
+                    </div>
+                    
+              </div>
+
+
+                        
+                <!-- Panels End -->
+
+   
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+
+ 
+
+ 
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+
+ <!--对话框 -->
+<div id="dialog-message" style="display:none;">
+    <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <span id="message-details"></span>
+    </p>
+</div>
+
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js"></script> 
+<script>
+    document.getElementById("channel-manger").style.display = "block"
+</script>
+
+ 
+
+

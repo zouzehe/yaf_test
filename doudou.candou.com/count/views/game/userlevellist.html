@@ -1,0 +1,140 @@
+<?php
+ 
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ 
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+ 
+ Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+ 
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 <span><i class="icon-table"></i> 游戏●牛牛 -- 等级设置</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+ 
+                            <form>
+                            <table class="mws-datatable-fn mws-table">
+                                <div class="dataTables_length">
+                                     
+                                        &nbsp;&nbsp;&nbsp;<a href="" id="mws-form-dialog-mdl-btn" class="btn btn-small" title="添加"><i class="icon-plus"></i>新增玩家等级</a> 
+                                                                        
+                                    
+                                </div>
+                            <thead>
+                                <tr role="row">
+                                    <th>等级</th>
+                                    <th>最少经验</th>
+                                    <th>等级名称</th>
+                                    <th>操作</th>
+                                     
+                                     
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+<?php  foreach($data as $vals ){ ?>                      
+                                <tr>
+                                    <td><?php echo $vals['level'] ;?></td>
+                                    <td><input type="text" id="min_exp_<?php echo $vals['level'] ;?>"  placeholder="最少经验" value="<?php echo $vals['min_exp'] ;?>"></td>
+                                    <td><input type="text" id="level_name_<?php echo $vals['level'] ;?>" placeholder="等级名称" value="<?php echo $vals['level_name'] ;?>"></td>
+                                    <td>
+                                        <span class="btn-group">                                     
+                                            <a href="javascript:void(0)" class="btn btn-medium" id="<?php echo $vals['level'] ;?>" title="修改" onclick="curEditting(this)"><i class="icon-pencil"></i></a> 
+                                            <a href="javascript:void(0)" class="btn btn-medium" id="<?php echo $vals['level'] ;?>" title="删除" onclick="curDel(this)"><i class="icon-trash"></i></a>                                   
+                                        </span>     
+                                    </td>
+                                </tr>
+<?php  } ?>                                 
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                        </form>
+                        </div>
+                            
+                    
+                    </div>
+                    
+              </div>
+
+
+                        
+                <!-- Panels End -->
+
+   
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+
+<!--dialog start-->
+                        <div id="mws-form-dialog" style="display:none">
+                                <form id="mws-validate" class="mws-form" action="/game/userleveladd" method="post">
+                                    <div id="mws-validate-error" class="mws-form-message error" style="display:none;"></div>
+                                    <div class="mws-form-inline">
+                                        <div class="mws-form-row">
+                                            <label class="mws-form-label">等级ID</label>
+                                            <div class="mws-form-item">
+                                                <input type="text" name="level" class="required">
+                                            </div>
+                                        </div>
+                                        <div class="mwmls-form-row">
+                                            <label class="mws-form-label">最少经验</label>
+                                            <div class="mws-form-item">
+                                                <input type="text" name="min_exp" class="required">
+                                            </div>
+                                        </div> 
+
+                                        <div class="mws-form-row">
+                                            <label class="mws-form-label">等级名称</label>
+                                            <div class="mws-form-item">
+                                                <input type="text" name="level_name" class="required">
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </form>
+                            </div>          
+    
+
+<!--dialog end-->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+<div id="dialog-message" style="display:none;">
+    <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <span id="message-details"></span>
+    </p>
+</div>
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js"></script> 
+<script src="/static/js/core/room.js"></script> 
+<script>
+    document.getElementById("game-manger").style.display = "block"
+</script>
+ 
+

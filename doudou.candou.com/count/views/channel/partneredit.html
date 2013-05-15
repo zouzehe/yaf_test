@@ -1,0 +1,166 @@
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+            
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+                
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span><i class="icon-table"></i> 渠道管理 -- 合作渠道编辑</span> 
+                    </div>
+
+                    <div class="mws-panel-body no-padding">
+                         
+                    	<form  id ="room-level-form" class="mws-form" action="/channel/edititem/action/cooperation" method="post">
+                            <br/>
+                    		<div class="mws-form-inline">
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label" >渠道</label>
+                    				<div class="mws-form-item">
+                                        <input name='name' type="text" class="small" value="<?php echo $data['name']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >渠道代号</label>
+                    				<div class="mws-form-item">
+                    					<input name='id' type="text" class="small" value="<?php echo $data['id']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >分成比例</label>
+                    				<div class="mws-form-item">
+                    					<input name='rate' type="text" class="small" value="<?php echo $data['rate']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >能否登陆</label>
+                    				<div class="mws-form-item">
+                                        <input name="can_login" type="checkbox" value="1" <?php if(!empty($data['can_login'])){echo 'checked';}?>>
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >登陆账号</label>
+                    				<div class="mws-form-item">
+                    					<input name='username' type="text" class="small" value="<?php echo $data['username']?>">
+                    				</div>
+                    			</div>
+                    			 
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >登陆密码</label>
+                    				<div class="mws-form-item">
+                    					<input name='password' type="password" class="small" value="<?php echo $data['password']?>">
+                    				</div>
+
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >密保邮箱</label>
+                    				<div class="mws-form-item">
+                    					<input name='safe_email' type="text" class="small" value="<?php echo $data['safe_email']?>">
+                    				</div>
+
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >联系人</label>
+                    				<div class="mws-form-item">
+                    					<input name='contract' type="text" class="small" value="<?php echo $data['contract']?>">
+                    				</div>
+
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >联系人电话</label>
+                    				<div class="mws-form-item">
+                                    <input name='mobile' type="text" class="small" value="<?php echo $data['mobile']?>">
+                    				</div>
+
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >收款人省份证号/护照号</label>
+                    				<div class="mws-form-item">
+                    					<input name='contract_id' type="text" class="small" value="<?php echo $data['contract_id']?>">
+                    				</div>
+
+                                </div>
+                                 <div class="mws-form-row">
+                    				<label class="mws-form-label" >收款公司</label>
+                    				<div class="mws-form-item">
+                    					<input name='payee_company' type="text" class="small" value="<?php echo $data['payee_company']?>">
+                    				</div>
+
+                                </div>
+                                 <div class="mws-form-row">
+                    				<label class="mws-form-label" >收款公司电话</label>
+                    				<div class="mws-form-item">
+                    					<input name='payee_phone' type="text" class="small" value="<?php echo $data['payee_phone']?>">
+                    				</div>
+
+                                </div>
+                                 <div class="mws-form-row">
+                    				<label class="mws-form-label" >收款公司营业执照编号</label>
+                    				<div class="mws-form-item">
+                    					<input name='payee_licence' type="text" class="small" value="<?php echo $data['payee_licence']?>">
+                    				</div>
+
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >收款银行</label>
+                    				<div class="mws-form-item">
+                    					<input name='bank' type="text" class="small" value="<?php echo $data['bank']?>">
+                    				</div>
+
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >收款银行账号</label>
+                    				<div class="mws-form-item">
+                    					<input name='bank_account' type="text" class="small" value="<?php echo $data['bank_account']?>">
+                    				</div>
+
+                                </div>
+
+
+             
+
+                     		<div class="mws-button-row" >
+                                <input type="submit" value="提交" class="btn btn-danger">
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+
+            	<!-- Panels End -->
+            </div>
+        </div>
+            <!-- Inner Container End -->
+                       
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+   
+    <script src="/static/js/demo/demo.formelements.js"></script>
+    <script src="/static/js/core/room.js"></script>
+
+ <script>
+    document.getElementById("channel-manger").style.display = "block"
+</script>
+     
+    
+
+ 
+
+

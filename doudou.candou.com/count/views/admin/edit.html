@@ -1,0 +1,128 @@
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+        	<!-- Inner Container Start -->
+            <div class="container">
+            
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+                
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span><i class="icon-pencil-2"></i> 后台管理 -- 编辑用户</span>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+                        
+
+                    	<form  id ="mws-form" class="mws-form" action="<?php echo HOST;?>user/editsave" method="post">
+                    		<div class="mws-form-inline">
+                           	  
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>用户名</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" id="username" name="username" value="<?php echo $data['username'] ?>">
+                                        <input type="hidden" name="uid" value="<?php echo $data['id'] ?>">
+                    				</div>
+                    			</div>
+                    			 
+
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>邮箱</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" id="email" name="email" value="<?php echo $data['email'] ?>">
+                    				</div>
+                    			</div>
+                                 <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>真实姓名</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" name="realname" id="realname" value="<?php echo $data['realname'] ?>">
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>职责</label>
+                    				<div class="mws-form-item">
+									       
+                                            
+                                            <select class="medium" name="duty" id="duty">                                           	 
+                                                <option <?php if($data['duty']==1) echo "selected";?> value="1">管理员</option>
+                                                <option <?php if($data['duty']==2) echo "selected";?> value="2">网站编辑</option>
+                                                <option <?php if($data['duty']==3) echo "selected";?> value="3">普通用户</option>
+                                            </select>
+                                            <input type="hidden" name="duty_cn" id="duty_cn" value="<?php echo $data['duty_cn']; ?>">
+                   				  </div>
+                                    
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label">权限</label>
+                    				<div class="mws-form-item clearfix">
+                    					<ul class="mws-form-list inline medium">
+                    						<?php foreach($allAuths as $value){ ?>
+                                            <li>
+                                                <input  type="checkbox" name="auth[]" 
+                                                <?php if(in_array($value['auth'], $userauths)){
+                                                    echo 'checked=true';
+                                                }   
+                                                ?> value="<?php echo $value['auth']?>" > <label><?php echo $value['name']; ?></label>
+                                            </li>
+                                             <? } ?>
+
+                       					</ul>
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>状态</label>
+                    				<div class="mws-form-item">
+									
+                                            <select class="medium" name="status" id="status">
+                                            	 
+                                                <option 
+                                                <?php 
+                                                    if($data['status']){
+                                                        echo "selected";
+                                                    } 
+                                                ?> 
+                                                value=1 >开启状态</option>
+                                                <option 
+                                                <?php 
+                                                    if(!$data['status']){
+                                                        echo "selected";
+                                                    } 
+                                                ?> 
+                                                value=0>停用状态</option>
+                                            </select>
+                   				  </div>
+                                    
+                    			</div>
+
+                               
+                    		<div class="mws-button-row">
+                    			<input type="submit" value="提交" class="btn btn-danger">
+                    			
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+
+            	<!-- Panels End -->
+             </div>
+         </div>
+            <!-- Inner Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+?>
+<script>
+    document.getElementById("game-manger").style.display = "block"
+</script>

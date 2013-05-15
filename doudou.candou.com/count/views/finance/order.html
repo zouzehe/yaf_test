@@ -1,0 +1,114 @@
+<?php
+if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ }
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+ 
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+ <?php 
+    }
+ ?>  
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 <span><i class="icon-table"></i> 财务管理 -- 订单管理</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+
+                             
+                             <table class="mws-datatable-fn mws-table">
+                                <div   class="dataTables_length">
+                                     <form name="searchForm" action="" method="post">
+                                        订单号<input id="orderid" type="text" class="mws-form-item" size="10" name="orderid" value="<?php echo $time['order_sn'];?>" >&nbsp; 
+                                        用户ID<input id="userid" type="text" class="mws-form-item" size="10" name="userid" value="<?php echo $time['user_id']?>" >
+                                        用户昵称<input id="username" type="text" class="mws-form-item" size="15" name="username" value="<?php echo $time['nickname'];?>">
+                                       
+                                        &nbsp;<button class="btn btn-danger" type="button" onclick="searchForm.submit();">搜索</button> 
+                                    </form>                                      
+                                    
+                                </div>
+                            <thead>
+                                <tr role="row">
+                                    <th>交易ID</th>
+                                    <th>玩家ID</th>
+                                    <th>游戏昵称</th>
+                                    <th>充值来源</th>
+                                    <th>商品</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>订单总价</th>
+                                    <th>是否支付</th>                                 
+                                    <th>支付方式</th>
+                                    <th>支付时间</th>                                     
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            
+                              <?php if(@$list){
+                                foreach($list as $value){ 
+
+                                ?>
+                                <tr>
+                                   <td><?php echo $value['order_sn'];?></td>
+                                    <td><?php echo $value['user_id'];?></td>
+                                    <td><?php echo $value['nickname'];?></td>
+                                    <td><?php echo $value['cooperation_name'];?></td>
+                                    <td><?php echo $value['goods_name'];?></td>
+                                    <td><?php echo $value['shop_price'];?></td>
+                                    <td><?php echo $value['goods_number'];?></td>
+                                    <td><?php echo $value['order_amount'];?></td>
+                                    <td><?php echo $value['pay_status']?'已支付':'未支付';?></td>
+                                    <td><?php echo $value['pay_status']?$value['payment_name']:'';?></td>
+                                    <td><?php echo $value['pay_status']?$value['pay_time']:'';?></td>
+                                </tr>
+                            <?php }
+                             }?>
+                            </tbody>
+                             </table>
+                         </div>
+
+                   <?php echo $fpage;?>
+                    </div>
+              </div>
+
+                <!-- Panels End -->
+
+   
+            <!-- Inner Container End -->
+ <?php
+    if(!Y::isAjax()){
+    ?>
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html",$time);
+    }
+ ?>
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js"></script>   
+<script>
+    document.getElementById("finance-manger").style.display = "block"
+</script>  

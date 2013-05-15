@@ -1,0 +1,88 @@
+<!-- bottom.html开始 -->
+        <!-- Footer -->
+            <div id="mws-footer">
+                ©2013 蚕豆网 - candou.com版权所有
+            </div>
+
+
+    </div>
+</div>
+  
+
+        <script src="/static/??js/libs/jquery-1.8.3.min.js,js/libs/jquery.mousewheel.min.js,js/libs/jquery.placeholder.min.js,custom-plugins/fileinput.js,jui/js/jquery-ui-1.9.2.min.js,jui/jquery-ui.custom.min.js,jui/js/jquery.ui.touch-punch.js,jui/js/timepicker/jquery-ui-timepicker.min.js,plugins/datatables/jquery.dataTables.min.js,custom-plugins/picklist/picklist.min.js,plugins/autosize/jquery.autosize.min.js,plugins/select2/select2.min.js,plugins/colorpicker/colorpicker-min.js,plugins/validate/jquery.validate-min.js,plugins/ibutton/jquery.ibutton.min.js,plugins/flot/jquery.flot.min.js,plugins/flot/plugins/jquery.flot.pie.min.js,plugins/flot/plugins/jquery.flot.stack.min.js,plugins/flot/plugins/jquery.flot.resize.min.js,plugins/validate/jquery.validate-min.js,plugins/colorpicker/colorpicker-min.js,custom-plugins/wizard/wizard.min.js,bootstrap/js/bootstrap.min.js,js/core/mws.js,js/core/themer.js"></script>
+   
+
+   
+
+     
+
+
+     
+
+     
+
+     
+
+    
+
+     
+
+    <!-- Demo Scripts (remove if not needed) -->
+    <script src="/static/js/demo/demo.widget.js"></script>
+    
+    
+    
+ <script>
+    var base_url="<?php echo HOST;?>"
+    function page(uri,num){
+        <?php error_reporting(E_ALL & ~E_NOTICE) ?>
+        var startTime = "<?php echo $time['startTime'];  ?>";
+        var endTime = "<?php   echo $time['endTime']; ?>";
+        //var cooperation = "<?php echo $time['cooperation']; ?>";
+        var orderid="<?php echo $time['order_sn']?>";
+        var userid ="<?php echo $time['user_id']?>";
+        var username="<?php echo $time['nickname']?>";
+
+        var path='';
+        if(startTime&&endTime){
+            path='/startTime/'+startTime+'/endTime/'+endTime;
+        }
+        //if(cooperation){
+          //  path=path+'/cooperation/'+cooperation;
+        //}
+        if(orderid){
+            path=path+'/orderid/'+orderid;
+        }
+        if(userid){
+            path=path+'/userid/'+userid;
+        }
+        if(username){
+            path=path+'/username/'+username;
+        }
+        $.get(base_url+uri+"/page/"+num+path,function(data){
+            $("#mws_content").html(data);
+            
+        });
+    }
+ /*   $("div#mws-navigation ul li a").click(function(){
+       alert(11)
+         $(this).parent("li").addClass("active");
+        //alert($(this).html());
+    });*/
+    function menu(uri){
+        $.get(base_url+uri,function(data){
+            $("#mws_content").html(data);
+        });
+    }
+    
+      
+    
+    </script>
+   
+
+    <!-- Demo Scripts (remove if not needed) -->
+    <!-- <script src="/static/js/demo/demo.dashboard.js"></script>  -->
+   
+
+</body>
+</html>

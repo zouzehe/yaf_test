@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+
+ 
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<!-- Viewport Metatag -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+ 
+
+ <link href="/static/??css/table.css,bootstrap/css/bootstrap.min.css,css/fonts/ptsans/stylesheet.css,css/fonts/icomoon/style.css,css/mws-style.css,css/icons/icol16.css,css/icons/icol32.css,css/demo.css,jui/css/jquery.ui.all.css,jui/jquery-ui.custom.css,css/mws-theme.css,css/themer.css,css/shared.css,css/core.css,css/panels.css,css/table.css,css/gallery.css,css/button.css,css/statistic.css,css/form.css,css/error.css,css/tweaks.css,css/plugins.css,css/lt-ie9.css,jui/css/jquery.ui.core.css,jui/css/jquery.ui.accordion.css,jui/css/jquery.ui.autocomplete.css,jui/css/jquery.ui.button.css,jui/css/jquery.ui.datepicker.css,jui/css/jquery.ui.dialog.css,jui/css/jquery.ui.menu.css,jui/css/jquery.ui.progressbar.css,jui/css/jquery.ui.resizable.css,jui/css/jquery.ui.selectable.css,jui/css/jquery.ui.slider.css,jui/css/jquery.ui.spinner.css,jui/css/jquery.ui.tabs.css,jui/css/jquery.ui.theme.css,plugins/ibutton/jquery.ibutton.css,plugins/colorpicker/colorpicker.css,jui/css/jquery.ui.timepicker.css" media="screen" rel="stylesheet" type="text/css">
+ 
+ 
+ 
+<title>蚕豆--游戏管理后台</title>
+
+</head>
+
+<body>
+
+    <!-- Themer (Remove if not needed) -->
+    <div id="mws-themer">
+      <div id="mws-themer-css-dialog">
+          <form class="mws-form">
+                <div class="mws-form-row">
+                    <div class="mws-form-item">
+                        <textarea cols="auto" rows="auto" readonly></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Themer End -->
+
+    <!-- Header -->
+    <div id="mws-header" class="clearfix">
+
+        <!-- Logo Container -->
+        <div id="mws-logo-container">
+
+            <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
+            <div id="mws-logo-wrap">
+                <img src="/static/images/logo.png" alt="mws admin">
+            </div>
+        </div>
+        <!-- Searchbox -->
+      <div id="mws-searchbox" class="mws-inset">
+                <form action="typography.html">
+                    <select name="selects" class="mws-search-select">
+                      <option>用户名</option>
+                      <option>用户ID</option> 
+                    </select>
+                    <input type="text" class="mws-search-input" placeholder="输入关键字">
+                    <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
+                </form>
+            </div>
+
+        <!-- User Tools (notifications, logout, profile, change password) -->
+        <div id="mws-user-tools" class="clearfix">
+
+            <div id="mws-user-info" class="mws-inset">
+                <!-- Username and Functions -->
+                <div id="mws-user-functions">
+                    <div id="mws-username">
+                        你好, admin
+                    </div>
+                    <ul>
+                        <li><a href="<?php echo HOST;?>User/profile">个人资料</a></li>
+                        <li><a href="<?php echo HOST;?>User/alterpassword">修改密码</a></li>
+                        <li><a href="<?php echo HOST;?>login/logout">退出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- head.html  结束 -->

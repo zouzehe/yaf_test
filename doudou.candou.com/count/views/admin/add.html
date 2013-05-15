@@ -1,0 +1,135 @@
+ 
+                 
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+            
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+                
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 <span><i class="icon-table"></i> 后台管理 -- 增加管理员</span> 
+                    </div>
+
+                    <div class="mws-panel-body no-padding">
+                        
+                    	<form  id ="mws-form" class="mws-form" action="<?php echo HOST;?>user/save" method="post">
+                    		<div class="mws-form-inline">
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>用户名</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" id="username" name="username">
+                    				</div>
+                    			</div>
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>密码</label>
+                    				<div class="mws-form-item">
+                    					<input type="password" class="medium" id="password" name="password">
+                                   
+                    				</div>
+                    			</div>
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>重复密码</label>
+                    				<div class="mws-form-item">
+                    					<input type="password" class="medium" id="repassword" name="repassword">
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>邮箱</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" id="email" name="email">
+                    				</div>
+                    			</div>
+                                 <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>真实姓名</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" name="realname" id="realname">
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>职责</label>
+                    				<div class="mws-form-item">
+									
+                                        <select class="medium" name="duty" id="duty">
+                                            	 
+                                            <option value="1">管理员</option>
+                                            <option value="2" selected>网站编辑</option>
+                                            <option value="3">普通用户</option>
+                                                
+                                        </select>
+
+                                       
+                                        <input type="hidden" name="duty_cn" id="duty_cn" value="网站编辑">
+
+                   				  </div>
+                                    
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label">权限</label>
+                    				<div class="mws-form-item clearfix">
+                    					<ul class="mws-form-list inline">                    						 
+                                            <li>
+                                                <input type="checkbox" name="auth[]" value=""> <label>1111</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="auth[]" value=""> <label>1111</label>
+                                            </li>
+                    						 
+                    					</ul>
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>状态</label>
+                    				<div class="mws-form-item">
+									
+                                            <select class="medium" name="status" id="status">
+                                            	 
+                                                <option value=1 selected>开启状态</option>
+                                                <option value=0>停用状态</option>
+                                            </select>
+                   				  </div>
+                                  
+                                    
+                    			</div>
+
+                               
+                    		<div class="mws-button-row">
+                    			<input type="submit" value="提交" class="btn btn-danger">
+                    			
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+
+            	<!-- Panels End -->
+            </div>
+        </div>
+            <!-- Inner Container End -->
+                       
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+<script>
+    document.getElementById("admin-manger").style.display = "block"
+</script> 
+     
+    
+
+ 

@@ -1,0 +1,101 @@
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+            
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+                
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span><i class="icon-table"></i> 渠道管理 -- 新增账号平台</span> 
+                    </div>
+
+                    <div class="mws-panel-body no-padding">
+                         
+                    	<form class="mws-form" action="/channel/edititem/action/platform" method="post">
+                            <br/>
+                    		<div class="mws-form-inline">
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label" >账号平台</label>
+                    				<div class="mws-form-item">
+                                        <input name='name' type="text" value="<?php echo $data['name']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >平台代号</label>
+                    				<div class="mws-form-item">
+                    					<input name='id' type="text" value="<?php echo $data['id']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >新用户赠送游戏币</label>
+                    				<div class="mws-form-item">
+                    					<input name='default_chips' type="text" value="<?php echo $data['default_chips']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >AppID</label>
+                    				<div class="mws-form-item">
+                    				<input name="appid" class="ibutton" type="text" value="<?php echo $data['appid']?>">
+                    				</div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >AppKey</label>
+                    				<div class="mws-form-item">
+                    					<input name='appkey' type="text" value="<?php echo $data['appkey']?>">
+                    				</div>
+                    			</div>
+                    			 
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label" >其他设置</label>
+                    				<div class="mws-form-item">
+                                        <textarea cols="50" rows="30" name='config' class="small"><?php echo $data['config']?></textarea>
+                    				</div>
+
+                                </div>
+
+                     		<div class="mws-button-row" >
+                                <input type="submit" value="提交" class="btn btn-danger">
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+
+            	<!-- Panels End -->
+            </div>
+        </div>
+            <!-- Inner Container End -->
+                       
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+   
+    <script src="/static/js/demo/demo.formelements.js"></script>
+    <script src="/static/js/core/room.js"></script>
+
+ <script>
+    document.getElementById("channel-manger").style.display = "block"
+</script>
+     
+    
+
+ 
+
+
+

@@ -1,0 +1,229 @@
+ 
+                 
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+        	<!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+            
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+                
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	<span><i class="icon-table"></i> 游戏●牛牛 -- 房间属性设置</span> 
+                    </div>
+
+                    <div class="mws-panel-body no-padding">
+                        
+                         
+                    <form  id ="room-level-form" class="mws-form" action="/game/doroomedit" method="post">
+                            <br/>
+                            <div class="mws-form-inline">
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >房间等级ID</label>
+                                    <div class="mws-form-item">
+                                        <input name="id" id="id" type="hidden" value="<?php echo $orgData['id'];?>"/>
+                                        <input name='room_level_code' type="text"  value="<?php echo $orgData['room_level_code'];?>" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                 
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >房间名称</label>
+                                    <div class="mws-form-item">
+                                        <input name='room_level_name' type="text" value="<?php echo $orgData['room_level_name'];?>" class="small" onkeyup='cleanStr(this)'>
+                                    </div>
+
+                                </div>
+
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >玩法</label>
+                                    <div class="mws-form-item">
+                                        <ul class="mws-form-list inline">
+                                            <li><input name="can_call_banker" id="can_call_banker"class="ibutton" type="checkbox" data-label-on="抢庄" data-label-off="非抢庄" value="1" <?php echo $orgData['can_call_banker']?"checked='checked'":"";?> onmousemove='alert(22)' onchange='ifgrab(this)'></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >抢庄时间</label>
+                                    <div class="mws-form-item">
+                                        <input name='grabbing_timeout' id='grabbing_timeout' type="text" value="<?php echo $orgData['grabbing_timeout'];?>" class="small required"  placeholder="10" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >选庄时间</label>
+                                    <div class="mws-form-item">
+                                        <input name="choose_banker_timeout" value="<?php echo $orgData['choose_banker_timeout'] ;?>" type="text" class="small" value='3' placeholder="3" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >下注时间</label>
+                                    <div class="mws-form-item">
+                                        <input name='bet_timeout' value="<?php echo $orgData['bet_timeout'];?>" type="text" class="small" value='5' placeholder="5" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >发牌时间(包括组牌和比牌)</label>
+                                    <div class="mws-form-item">
+                                        <input name='deal_timeout' value="<?php echo $orgData['deal_timeout'];?>" type="text" class="small" value='20' placeholder="20" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >准备时间</label>
+                                    <div class="mws-form-item">
+                                        <input name='prepare_timeout' value="<?php echo $orgData['prepare_timeout'];?>" type="text" class="small" value='10' placeholder="10" rel='tooltip' data-placement='right' data-original-title='单位是秒,只能输入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >结果显示时间</label>
+                                    <div class="mws-form-item">
+                                        <input name='result_timeout' value="<?php echo $orgData['result_timeout']?>" type="text" class="small" value='3' placeholder="3" rel='tooltip' data-placement='right' data-original-title='单位是秒,只能输入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+
+                                 <div class="mws-form-row">
+                                    <label class="mws-form-label" >自动开始</label>
+                                    <div class="mws-form-item">
+                                        <ul class='mws-form-list inline'>
+                                            <li>
+                                            <input name="auto_start" value="<?php echo $orgData['auto_start'];?>"class="ibutton" type="checkbox" data-label-on="自动开始" data-label-off="手动开始"value='1' />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >游戏最少玩家</label>
+                                    <div class="mws-form-item">
+                                        <input name='min_user' value="<?php echo $orgData['min_user'];?>" type="text" class="small" value='2' placeholder="2" rel='tooltip' data-placement='right' data-original-title='单位是秒,只能输入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >游戏最多玩家</label>
+                                    <div class="mws-form-item">
+                                        <input name='max_user' value="<?php echo $orgData['max_user'];?>" type="text" class="small" value='5' placeholder="5" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                             <div class="mws-form-row">
+                                    <label class="mws-form-label" >房间基数</label>
+                                    <div class="mws-form-item">
+                                        <input name='room_base' value="<?php echo $orgData['room_base'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >最大下注倍数</label>
+                                    <div class="mws-form-item">
+                                        <input name='can_bet_times' value="<?php echo $orgData['can_bet_times'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >房间ID范围</label>
+                                    <div class="mws-form-item">
+                                        <input name='room_id_range' value="<?php echo $orgData['room_id_range'];?>" type="text" class="small" value='1-1000' placeholder="1-1000">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >扑克倍率</label>
+                                    <div class="mws-form-item">
+                                        <input name='poke_times' value="<?php echo $orgData['poke_times'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                               
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >房间台费</label>
+                                    <div class="mws-form-item">
+                                        <input name='tax' value="<?php echo $orgData['tax'];?>" type="text" class="small" onkeyup="onlyFloat(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >经验倍率</label>
+                                    <div class="mws-form-item">
+                                        <input name='exp_rate' value="<?php echo $orgData['exp_rate'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >默认携带</label>
+                                    <div class="mws-form-item">
+                                        <input name='default_carry' value="<?php echo $orgData['default_carry'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >最少携带</label>
+                                    <div class="mws-form-item">
+                                        <input name='min_carry' value="<?php echo $orgData['min_carry'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >最大携带</label>
+                                    <div class="mws-form-item">
+                                        <input name='max_carry' value="<?php echo $orgData['max_carry'];?>" type="text" class="small" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >用户组牌</label>
+                                    <div class="mws-form-item">
+                                        <ul class="mws-form-list inline">
+                                            <li><input name="user_make" id="user_make" class="ibutton" type="checkbox" value="1" data-label-on="True" data-label-off="False" <?php echo $orgData['user_make']?"checked='checked'":"";?> onchange='ifUserMakeFee(this)'></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >用户组牌费用</label>
+                                    <div class="mws-form-item">
+                                        <select name='user_make_fee_type' id='user_make_fee_type'>                                                
+                                            <option value="chips" <?php echo $orgData['user_make_fee_type']=='chips'?"checked='checked'":"" ?> >游戏币</option>
+                                            <option value="coins" <?php echo $orgData['user_make_fee_type']=='coins'?"checked='checked'":"" ?> >金币</option>
+                                            <option value="goods" <?php echo $orgData['user_make_fee_type']=='goods'?"checked='checked'":"" ?> >道具</option>     
+                                                                                           
+                                        </select>
+                                        <input name='user_make_fee' id='user_make_fee' value="<?php echo $orgData['user_make_fee'];?>" type="text" rel='tooltip' data-placement='right' data-original-title='只能入数字'  onkeyup="onlyInt(this)">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label" >用户组牌描述</label>
+                                    <div class="mws-form-item">
+                                        <input name='user_make_fee_desc' id='user_make_fee_desc' value="<?php echo $orgData['user_make_fee_desc'];?>" type="text" class="small" value='用于客户端显示' placeholder="用于客户端显示">
+                                    </div>
+                                </div>
+             
+
+                            <div class="mws-button-row" >
+                                <input type="reset" value="重置" class="btn ">
+                                <input type="submit" value="提交" class="btn btn-danger">
+                            </div>
+                        </form>
+ 
+                    </div>    	
+                </div>
+
+            	<!-- Panels End -->
+            </div>
+        </div>
+            <!-- Inner Container End -->
+                       
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+    
+ ?>
+<script src="/static/js/demo/demo.formelements.js"></script>
+<script src="/static/js/core/room.js"></script>
+ <script>
+    document.getElementById("game-manger").style.display = "block"
+</script>
+     
+    
+
+ 

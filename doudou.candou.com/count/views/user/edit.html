@@ -1,0 +1,258 @@
+<?php
+  
+ Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+  ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+  Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->    
+        
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+        
+        	<!-- Inner Container Start -->
+            <div class="container">
+            
+            	<!-- Statistics Button Container --><!-- Panels Start -->
+                
+            	<div class="mws-panel grid_8">
+                	<div class="mws-panel-header">
+                    	 <span><i class="icon-table"></i> 用户管理 -- 编辑用户</span> 
+                    </div>
+                     <div class="mws-panel-toolbar">
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <a href="#" class="btn active">详细信息</a>
+                                <a href="/user/vip/id/<?php echo $data["user_id"]?>" class="btn">VIP类型</a>
+                                <a href="/user/viprecord/id/<?php echo $data["user_id"] ?>" class="btn">VIP使用记录</a>
+                                <a href="/user/email/id/<?php echo $data["user_id"] ?>" class="btn">邮件列表</a>
+                                <a href="/user/friends/id/<?php echo $data["user_id"] ?>" class="btn">好友列表</a>
+                                <a href="/user/property/id/<?php echo $data["user_id"] ?>" class="btn">道具列表</a>
+                                <a href="/user/kick/id/<?php echo $data["user_id"] ?>" class="btn">踢人</a> 
+                                <a href="/user/speak/id/<?php echo $data["user_id"] ?>" class="btn">禁言</a>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mws-panel-body no-padding">
+                       
+                    	<form  id ="mws-form" class="mws-form" action="/user/save" method="post">
+                    		<div class="mws-form-inline">                           	  
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>游戏昵称</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" name="nickname" value="<?php echo $data["nickname"]?>" >
+                                        <input type="hidden" name="userid" value="<?php echo $data["user_id"]?>">
+                    				</div>
+                    			</div>
+                    			<div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>金币</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="coins" value="<?php echo $data['coins']?>">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>游戏币</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="chips" value="<?php echo $data['chips']?>">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>保险箱</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="safebox_chips" value="<?php echo $data['safebox_chips']?>">
+                                    </div>
+                                </div>             
+
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>创建时间</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="medium" value="<?php echo $data["join_time"]?>" disabled>
+                    				</div>
+                    			</div>
+                                 <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>是否为VIP</label>
+                    				<div class="mws-form-item">                    					 
+                                                <input name="is_vip" class="ibutton" type="checkbox" data-label-on="是" data-label-off="否" <?php if($data["is_vip"]){ echo "checked"; }?> value="1" >                                             
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>VIP等级</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="vip_level" value="<?php echo $data["vip_level"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>VIP类型</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["vip_type"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>VIP过期时间</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["vip_expire_time"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>等级</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["level"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>经验</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" name="exp" value="<?php echo $data['exp']?>">
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>用户登录类型</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["type"]?>" disabled>
+                                    </div>
+                                </div>
+
+                                <?php if(strtolower($data["type"]) == 'guest'){ ?>
+
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>游客ID</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["guest_id"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>客户端类型</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["client_type"]?>" disabled>
+                                    </div>
+                                </div>
+                                 <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>客户端ID</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["client_id"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>分辨率</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["resolution"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>操作系统</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["os"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>操作系统版本</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["os_version"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>网络类型</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["network"]?>" disabled>
+                                    </div>
+                                </div>
+
+                                <?php } ?>
+
+                                <?php if(strtolower($data["type"]) == 'platform'){ ?>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>开放平台</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["platform_id"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>开放平台ID</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["open_id"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>开放平台oauth_token</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["oauth_token"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>最后一次登录时间</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["active_time"]?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>第一次登录时间</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["create_time"]?>" disabled>
+                                    </div>
+                                </div>
+
+                                <?php }?>
+
+                               
+                                                      
+                                <div class="mws-form-row">
+                    				<label class="mws-form-label"><span>*</span>能否登录</label>
+                    				<div class="mws-form-item">
+									    <input name="can_login" class="ibutton" type="checkbox" data-label-on="是" data-label-off="否" <?php if($data["can_login"]){ echo "checked"; }?> value="1">   
+                                        <input type="text" class="small mws-dtpicker" name="can_login_time" value="<?php echo $data["can_login_time"]?>" readonly="readonly">      
+                   				  </div>
+                                    
+                    			</div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>能否发言</label>
+                                    <div class="mws-form-item">
+                                         <input name="can_speak" class="ibutton" type="checkbox" data-label-on="是" data-label-off="否" <?php if($data["can_speak"]){ echo "checked"; }?> value="1">                              
+                                        <input type="text" class="small mws-dtpicker" name="can_speak_time" value="<?php echo $data["can_speak_time"]?>" readonly="readonly"> 
+                                  </div>
+                                    
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>渠道</label>
+                                    <div class="mws-form-item">
+                                         <input type="text" class="medium" value="<?php echo $data["cooperation_id"]?>" disabled>
+                                    </div>
+                                    
+                                </div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label"><span>*</span>客户端</label>
+                                    <div class="mws-form-item">
+                                        <input type="text" class="medium" value="<?php echo $data["client"]?>" disabled>    
+                                  </div>
+                                    
+                                </div>
+
+                               
+                    		<div class="mws-button-row">
+                    			<input type="submit" value="提交" class="btn btn-danger">
+                    			
+                    		</div>
+                    	</form>
+                    </div>    	
+                </div>
+
+            	<!-- Panels End -->
+             </div>
+         </div>
+            <!-- Inner Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html"/*,$mune*/);
+?>
+
+
+ 
+
+<!-- Themer Script (Remove if not needed) -->
+<script src="/static/js/core/user.js"></script>
+<script src="/static/js/demo/demo.formelements.js"></script>
+<script>
+    document.getElementById("user-manger").style.display = "block"
+</script>

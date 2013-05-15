@@ -1,0 +1,97 @@
+<?php
+ if(!Y::isAjax()){
+    Yaf_View_Simple::display( "public/head.html"/*,$mune*/);
+ }
+ ?>
+
+
+
+<!-- menu.html开始 -->
+<?php
+if(!Y::isAjax()){ 
+    Yaf_View_Simple::display( "public/menu.html"/*,$mune*/);
+?>
+<!-- menu.html结束 -->
+
+
+
+
+        <!-- Main Container Start -->
+        <div id="mws-container" class="clearfix">
+
+            <!-- Inner Container Start -->
+            <div id="mws_content" class="container">
+<?php }
+ ?> 
+                <!-- Statistics Button Container --><!-- Panels Start -->
+
+                <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                         <span><i class="icon-table"></i> 财务管理 -- 按支付方式&nbsp;&nbsp;&nbsp;(当前为所有时间段，订单数仅计算支付成功订单)</span> 
+                    </div>
+                    <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper">
+
+                        <div class="mws-panel-body no-padding">
+ 
+                            <table class="mws-datatable-fn mws-table">
+                                <div   class="dataTables_length">
+                                     <form name="searchForm" action="" method="post">
+                                    
+                                        从&nbsp;<input type="text" class="timeInput" name="startTime" id="startTime" readonly value="<?php echo $time['startTime']?>"> 
+                                        &nbsp;到&nbsp;<input type="text" class="timeInput" name="endTime" id="endTime" readonly value="<?php echo $time['endTime']?>">&nbsp;
+                                        &nbsp;<button class="btn btn-danger" id="searchByChannel-btn" onclick="searchForm.submit();">查询</botton>
+                                        </form>                                     
+                                </div>
+                            <thead>
+                                <tr role="row">
+                                    <th>支付代号</th>
+                                    <th>支付方式</th>
+                                    <th>订单数</th>  
+                                    <th>订单总额</th>  
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                            <?php
+                               if(@$list){
+                                foreach ($list as $value) { ?>
+                                <tr role="row">
+                                    <td><?php echo $value['payment_id'];?>
+                                    <td><?php echo $value['payment_name']; ?></td>
+                                    <td><?php echo $value['t']; ?></td> 
+                                     <td><?php echo $value['total']; ?></td>                                    
+                                </tr>
+                            <?php 
+                                }
+                            }
+                            ?>
+                            </tbody>
+                             </table>
+                         </div>
+
+                    <?php echo $fpage;?>
+                    </div>
+              </div>
+
+                <!-- Panels End -->
+
+ <?php
+    if(!Y::isAjax()){
+        ?>   
+            <!-- Inner Container End -->
+       </div>
+
+     </div>
+    <!-- Main Container End -->
+<?php
+        Yaf_View_Simple::display( "public/bottom.html",$time);
+    }
+ ?>
+
+<!-- Demo Scripts (remove if not needed) -->
+<script src="/static/js/demo/demo.table.js"></script>
+<script src="/static/js/date/date.js"></script>
+<!-- Search Script -->
+<script src="/static/js/core/search.js"></script>
+<script>
+    document.getElementById("finance-manger").style.display = "block"
+</script>      
